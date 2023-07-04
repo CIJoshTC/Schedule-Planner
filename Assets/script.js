@@ -7,6 +7,21 @@ $(function () {
   $("#currentDay").text(currentDate);
   
 });
+
+var startHour = 9;
+var endHour = 17;
+
+for (var hour = startHour; hour <= endHour; hour++) {
+  var hourString = hour > 12 ? hour - 12 + "PM" : hour + "AM";
+  var rowClass = hour < dayjs().hour() ? "past" : hour === dayjs().hour() ? "present" : "future";
+  var description = localStorage.getItem("hour-" + hour) || "";};
+
+  var timeBlock = $("<div>").attr("id", "hour-" + hour).addClass("row time-block " + rowClass);
+    var hourColumn = $("<div>").addClass("col-2 col-md-1 hour text-center py-3").text(hourString);
+    var descriptionColumn = $("<textarea>").addClass("col-8 col-md-10 description").attr("rows", "3").val(description);
+    var save
+
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
